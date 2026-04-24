@@ -5,20 +5,23 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.6</version>
+        <version>4.0.6</version> <!-- MAJOR.MINOR.PATCH-->
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.zee</groupId>
     <artifactId>ebs</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ebs</name>
-    <description>ebs</description>
+    <description>exploring spring boot</description>
     <url/>
     <licenses>
         <license/>
     </licenses>
     <developers>
-        <developer/>
+        <developer>
+            <email>ezekiel.eromosei@gmail.com</email>
+            <id>zee</id>
+        </developer>
     </developers>
     <scm>
         <connection/>
