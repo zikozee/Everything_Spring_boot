@@ -1,9 +1,12 @@
 package com.zee.ebs.myservice;
 
 
+import com.zee.ebs.EbsApplication;
 import com.zee.ebs.annotations.ZeeComponent;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.ApplicationContext;
 
 /**
  * @dev : Ezekiel Eromosei
@@ -12,9 +15,22 @@ import org.springframework.boot.CommandLineRunner;
 
 @Slf4j
 @ZeeComponent
+@RequiredArgsConstructor
 public class MyCustomService implements CommandLineRunner {
+
+    private final ComponentService componentService;
+
     @Override
     public void run(String... args) throws Exception {
         log.info("========>>>>>>>>>Zee Component:: MyCustomService is running...");
+        doSomeWork();
+    }
+
+    // GlobalExceptionHandler  --->  @RestControllerAdvice
+    public static void doSomeWork(){
+        ApplicationContext context = EbsApplication.getContext();
+        ComponentService bean = context.getBean(ComponentService.class);
+        String s = bean.checkMe();
+        log.info("Currently in MyCustomerService {}", s.contains("WOOOO!!!"));
     }
 }

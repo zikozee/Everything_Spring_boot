@@ -13,9 +13,19 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 public class ComponentService implements CommandLineRunner {
+
+    public ComponentService (){
+        log.info("started Component service");
+    }
+
     @Override
     public void run(String... args) throws Exception {
         log.info("ComponentService is running...");
         // You can add any initialization logic here
+    }
+
+    public String checkMe(){
+        log.info("ComponentService is running...");
+        return "WOOOO!!! this is working";
     }
 }
