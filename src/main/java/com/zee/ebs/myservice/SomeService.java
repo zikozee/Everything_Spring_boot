@@ -3,6 +3,7 @@ package com.zee.ebs.myservice;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
  * @date : 24 Apr, 2026
  */
 
+@Order(4)
 @Slf4j
 @Service
 public class SomeService implements CommandLineRunner{

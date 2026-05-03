@@ -3,6 +3,7 @@ package com.zee.ebs.myservice;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
  * @date : 24 Apr, 2026
  */
 
+@Order(1)
 @Slf4j
 @Component
 public class ComponentService implements CommandLineRunner {
@@ -25,7 +27,7 @@ public class ComponentService implements CommandLineRunner {
     }
 
     public String checkMe(){
-        log.info("ComponentService is running...");
+        log.info("Within ComponentService ...");
         return "WOOOO!!! this is working";
     }
 }
