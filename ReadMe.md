@@ -1,0 +1,35 @@
+## SPRING APPLICATIION EVENTS
+
+- ApplicationStartingEvent
+  - uses
+    - logging setup
+    - very early initialization
+- ApplicationEnvironmentPreparedEvent
+  - uses
+    - reading properties
+    - profile inspection
+- ApplicationContextInitializedEvent
+  - uses
+    - context customization
+    - add bean factory post-processors
+- ApplicationPreparedEvent
+  - uses
+    - inspect bean definitions
+    - environment is ready for use at this stage
+- ContextRefreshedEvent
+  - uses
+    - final bean initialization
+    - cache warmup
+- WebServerInitializedEvent
+  - uses
+    - service discovery
+    - get actual port
+- ApplicationStartedEvent
+  - uses
+    - startup metrics
+- ApplicationReadyEvent
+  - uses
+    - background jobs
+- ApplicationFailedEvent
+  - uses
+    - cleanup

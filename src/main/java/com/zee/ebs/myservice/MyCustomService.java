@@ -31,7 +31,7 @@ public class MyCustomService implements CommandLineRunner {
         ApplicationContext context = EbsApplication.getContext();
         MonetaryService monetaryBean = context.getBean(MonetaryService.class);
         monetaryBean.doComplexStuff();
-//        monetaryBean.doComplexStuff();
+        monetaryBean.doComplexStuff();
 //        monetaryBean.doComplexStuff();
 
     }

@@ -1,5 +1,9 @@
 package com.zee.ebs;
 
+import com.zee.ebs.springbootevents.ContextInitializedEventListener;
+import com.zee.ebs.springbootevents.EnvironmentPreparedEventListener;
+import com.zee.ebs.springbootevents.StartingEventListener;
+import com.zee.ebs.springbootevents.PreparedEvent;
 import lombok.Getter;
 import org.springframework.beans.BeansException;
 import org.springframework.boot.SpringApplication;
@@ -14,7 +18,15 @@ public class EbsApplication implements ApplicationContextAware {
     private static ApplicationContext context;
 
     public static void main(String[] args) {
-        SpringApplication.run(EbsApplication.class, args);
+//        SpringApplication.run(EbsApplication.class, args);
+        SpringApplication app = new SpringApplication(EbsApplication.class);
+        app.addListeners(
+                new StartingEventListener(),
+                new EnvironmentPreparedEventListener(),
+                new ContextInitializedEventListener(),
+                new PreparedEvent()
+        );
+        app.run(args);
     }
 
     @Override
