@@ -4,6 +4,7 @@ import com.zee.ebs.springbootevents.ContextInitializedEventListener;
 import com.zee.ebs.springbootevents.EnvironmentPreparedEventListener;
 import com.zee.ebs.springbootevents.StartingEventListener;
 import com.zee.ebs.springbootevents.PreparedEvent;
+import com.zee.ebs.startuplogic.ContextRefreshedStartup;
 import lombok.Getter;
 import org.springframework.beans.BeansException;
 import org.springframework.boot.SpringApplication;
@@ -24,7 +25,8 @@ public class EbsApplication implements ApplicationContextAware {
                 new StartingEventListener(),
                 new EnvironmentPreparedEventListener(),
                 new ContextInitializedEventListener(),
-                new PreparedEvent()
+                new PreparedEvent(),
+                new ContextRefreshedStartup()
         );
         app.run(args);
     }
