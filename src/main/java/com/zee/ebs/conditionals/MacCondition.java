@@ -1,0 +1,20 @@
+package com.zee.ebs.conditionals;
+
+
+import org.springframework.context.annotation.Condition;
+import org.springframework.context.annotation.ConditionContext;
+import org.springframework.core.type.AnnotatedTypeMetadata;
+
+/**
+ * @dev : Ezekiel Eromosei
+ * @date : 08 Jun, 2026
+ */
+
+public class MacCondition implements Condition {
+    @Override
+    public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
+
+        String os =  System.getProperty("os.name");
+        return os != null && os.toLowerCase().contains("mac");
+    }
+}

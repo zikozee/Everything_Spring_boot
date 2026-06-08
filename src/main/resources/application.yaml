@@ -7,3 +7,12 @@ context-text: Zee_EBS
 
 server:
   port: 8080
+
+feature:
+  payment:
+    enabled: false
+
+
+is:
+  redis:
+    Cluster: false
