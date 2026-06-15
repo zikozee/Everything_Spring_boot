@@ -1,0 +1,3 @@
+org.springframework.boot.EnvironmentPostProcessor=\
+  com.zee.ebs.environmentprocessor.CustomEnvironmentProcessor,\
+  com.zee.ebs.environmentprocessor.RegionApiEnvironmentPostProcessor

@@ -2,6 +2,7 @@ package com.zee.ebs.myservice;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class ComponentService implements CommandLineRunner {
 
+    @Value("${app.region}")
+    private String region;
+
+    @Value("${external.api}")
+    private String externalApi;
+
     public ComponentService (){
         log.info("started Component service");
     }
@@ -24,6 +31,8 @@ public class ComponentService implements CommandLineRunner {
     public void run(String... args) throws Exception {
         log.info("ComponentService is running...");
         // You can add any initialization logic here
+        log.info("region from Post processor : {}", region);
+        log.info("deploying to continent : {}", externalApi);
     }
 
     public String checkMe(){
