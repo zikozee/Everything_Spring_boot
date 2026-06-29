@@ -2,26 +2,29 @@ spring:
   application:
     name: ebs
 
+  profiles:
+    active: ${SPRING_PROFILE:prod}
 
-context-text: Zee_EBS
+
+context-text: ${CONTEXT_TEXT:Zee_EBS}
 
 server:
-  port: 8080
+  port: ${SERVER_PORT:8080}
 
 feature:
   payment:
-    enabled: false
+    enabled: ${FEATURE_PAYMENT_ENABLED:false}
 
 
 is:
   redis:
-    Cluster: false
+    Cluster: ${IS_REDIS_CLUSTER:false}
 
 management:
   endpoints:
     web:
       exposure:
-        include: '*'
+        include: ${MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE:*}
   endpoint:
     health:
-      show-details: always
+      show-details: ${MANAGEMENT_ENDPOINT_HEALTH_SHOW_DETAILS:always}
