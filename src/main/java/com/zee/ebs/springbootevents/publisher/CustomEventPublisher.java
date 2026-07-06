@@ -25,7 +25,7 @@ public class CustomEventPublisher implements CommandLineRunner {
 
         applicationEventPublisher.publishEvent(new GenericEvent(new SpringApplication(EbsApplication.class), new String[]{}, "ZEE"));
 
-        Thread.sleep(5000);
+        Thread.sleep(20);
 //        throw new RuntimeException();
     }
 }

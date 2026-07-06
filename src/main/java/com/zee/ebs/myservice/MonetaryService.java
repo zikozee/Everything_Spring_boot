@@ -35,7 +35,7 @@ public class MonetaryService {
         log.info("Doing some complex Monetary Stuff ...");
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(10);
             log.info("Calling foreign exchange service .....");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
