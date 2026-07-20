@@ -28,3 +28,24 @@ management:
   endpoint:
     health:
       show-details: ${MANAGEMENT_ENDPOINT_HEALTH_SHOW_DETAILS:always}
+
+esb:
+  name: PropsCatcher
+  ip: 127.0.0.1
+  port: 8056
+  security:
+    enabled: true
+    token: dasjafdljdskjdasjfdaskfj
+    roles:
+    - USER
+    - ADMIN
+esb2:
+  name: RecordPropsCatcher
+  ip: 127.0.1.1
+  port: 8056
+  security:
+    enabled: false
+    token: recordcatcher
+    roles:
+      - USER
+      - ADMIN
