@@ -3,9 +3,11 @@ package com.zee.ebs.controllers;
 
 import com.zee.ebs.dto.SampleRequest;
 import com.zee.ebs.dto.SampleResponse;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -16,13 +18,14 @@ import java.time.Month;
  * @date : 27 Jul, 2026
  */
 
+@Validated
 @Slf4j
 @RestController
 @RequestMapping(path = "sample")
 public class SampleController {
 
     @PostMapping
-    public ResponseEntity<SampleResponse> createObject(@RequestBody SampleRequest sampleRequest){
+    public ResponseEntity<SampleResponse> createObject(@RequestBody @Valid SampleRequest sampleRequest){
 
         return ResponseEntity.ok(
                 new SampleResponse(
