@@ -1,0 +1,59 @@
+package com.zee.ebs.dto;
+
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
+
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+/**
+ * @dev : Ezekiel Eromosei
+ * @date : 12 Aug, 2026
+ */
+
+@Data
+public class PaymentRequest {
+    @DecimalMin(value = "100", message = "amount is required")
+    private BigDecimal amount;
+    @NotBlank(message = "merchantName is required")
+    private String merchantName;
+    @NotBlank(message = "reference is required")
+    private String reference;
+    @NotBlank(message = "currency is required")
+    private String currency;
+
+    @Valid
+    private Contact contact;
+
+    private CardType cardType = CardType.VERVE;
+
+    @NotBlank(message = "payeeName is required", groups = {Verve.class})
+    private String payeeName;
+    @Future(message = "due date should be in the future", groups = {Verve.class})
+    private LocalDate dueDate;
+
+    @NotBlank(message = "requesterName is required", groups = {Visa.class})
+    private String requesterName;
+
+    @Min(value = 18, message = "payeeAge is required", groups = {MasterCard.class})
+    private int payeeAge;
+
+
+    @Data
+    public static class Contact {
+        @NotBlank(message = "address is required")
+        private String address;
+        @NotBlank(message = "phoneNumber is required")
+        private String phoneNumber;
+    }
+
+    public interface Verve{}
+    public interface MasterCard{}
+    public interface Visa{}
+
+}

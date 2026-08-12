@@ -1,6 +1,7 @@
 package com.zee.ebs.controllers;
 
 
+import com.zee.ebs.dto.PaymentRequest;
 import com.zee.ebs.dto.SampleRequest;
 import com.zee.ebs.dto.SampleResponse;
 import jakarta.validation.Valid;
@@ -85,5 +86,19 @@ public class SampleController {
     @DeleteMapping
     public void deleteSingle(@RequestParam(value = "age") int age){
         log.info("deleted record with age: {}", age);
+    }
+
+
+    @PostMapping(path = "pay")
+    public ResponseEntity<SampleResponse> pay(@RequestBody @Valid PaymentRequest paymentRequest){
+
+
+        return ResponseEntity.ok(
+                new SampleResponse(
+                        paymentRequest.getMerchantName(),
+                        LocalDate.of(1995, Month.DECEMBER, 20),
+                        52
+                )
+        );
     }
 }
