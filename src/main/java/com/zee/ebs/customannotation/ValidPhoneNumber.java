@@ -1,0 +1,23 @@
+package com.zee.ebs.customannotation;
+
+
+import com.zee.ebs.customannotation.validator.PhoneNumberValidator;
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
+
+import java.lang.annotation.*;
+
+/**
+ * @dev : Ezekiel Eromosei
+ * @date : 12 Aug, 2026
+ */
+
+@Documented
+@Constraint(validatedBy = PhoneNumberValidator.class)
+@Target({ElementType.FIELD, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface ValidPhoneNumber {
+    String message() default "Invalid phone number";
+    Class<?>[] groups() default {};
+    Class<? extends Payload>[] payload() default {};
+}

@@ -1,6 +1,8 @@
 package com.zee.ebs.dto;
 
 
+import com.zee.ebs.customannotation.ValidCardType;
+import com.zee.ebs.customannotation.ValidPhoneNumber;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import lombok.Data;
@@ -27,7 +29,8 @@ public class PaymentRequest {
     @Valid
     private Contact contact;
 
-    private CardType cardType = CardType.VERVE;
+    @ValidCardType(message = "card type is really not valid")
+    private String cardType = "VERVE";
 
     @NotBlank(message = "payeeName is required", groups = {Verve.class})
     private String payeeName;
@@ -46,6 +49,7 @@ public class PaymentRequest {
     public static class Contact {
         @NotBlank(message = "address is required")
         private String address;
+        @ValidPhoneNumber(message = "phoneNumber is not valid")
         @NotBlank(message = "phoneNumber is required")
         private String phoneNumber;
     }

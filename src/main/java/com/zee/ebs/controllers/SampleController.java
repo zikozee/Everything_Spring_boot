@@ -102,7 +102,7 @@ public class SampleController {
     @PostMapping(path = "pay")
     public ResponseEntity<SampleResponse> pay(@RequestBody @Valid PaymentRequest paymentRequest){
 
-        CardType cardType = paymentRequest.getCardType();
+        CardType cardType = CardType.valueOf(paymentRequest.getCardType().toUpperCase());
 
         Class<?>[] groups = null;
         switch (cardType) {
