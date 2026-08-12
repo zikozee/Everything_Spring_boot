@@ -1,6 +1,7 @@
 package com.zee.ebs.dto;
 
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
@@ -24,7 +25,10 @@ public record SampleRequest(
 
         @DecimalMax(value = "10000", message = "max 10000")
         @DecimalMin(value = "100", message = "min 100")
-        BigDecimal amount
+        BigDecimal amount,
+
+        @Valid
+        Metadata metadata
 
 ) {
 }
