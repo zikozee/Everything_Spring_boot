@@ -1,10 +1,16 @@
 package com.zee.ebs.controllers;
 
 
+import com.zee.ebs.dto.CardType;
 import com.zee.ebs.dto.PaymentRequest;
 import com.zee.ebs.dto.SampleRequest;
 import com.zee.ebs.dto.SampleResponse;
+import com.zee.ebs.exception.FieldError;
+import com.zee.ebs.exception.FieldValidationException;
 import jakarta.validation.Valid;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.List;
 
 /**
  * @dev : Ezekiel Eromosei
@@ -23,7 +30,10 @@ import java.time.Month;
 @Slf4j
 @RestController
 @RequestMapping(path = "sample")
+//@RequiredArgsConstructor
 public class SampleController {
+
+//    private final Validator validator;
 
     @PostMapping
     public ResponseEntity<SampleResponse> createObject(@RequestBody @Valid SampleRequest sampleRequest){
@@ -92,6 +102,28 @@ public class SampleController {
     @PostMapping(path = "pay")
     public ResponseEntity<SampleResponse> pay(@RequestBody @Valid PaymentRequest paymentRequest){
 
+        CardType cardType = paymentRequest.getCardType();
+
+        Class<?>[] groups = null;
+        switch (cardType) {
+            case MASTERCARD ->  groups = new Class[]{PaymentRequest.MasterCard.class};
+            case VERVE ->   groups = new Class[]{PaymentRequest.Verve.class};
+            case VISA ->   groups = new Class[]{PaymentRequest.Visa.class};
+        }
+
+//        List<FieldError> fieldErrors = validator
+        List<FieldError> fieldErrors = Validation.buildDefaultValidatorFactory().getValidator()
+                .validate(paymentRequest, groups)// this contains the field, message and rejected-value
+                .parallelStream()
+                .map(constraint -> new FieldError(
+                        constraint.getPropertyPath().toString(),
+                        constraint.getMessage(),
+                        constraint.getInvalidValue()
+                )).toList();
+
+        if(!fieldErrors.isEmpty()){
+            throw new FieldValidationException(fieldErrors);
+        }
 
         return ResponseEntity.ok(
                 new SampleResponse(

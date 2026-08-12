@@ -2,10 +2,7 @@ package com.zee.ebs.dto;
 
 
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -34,6 +31,7 @@ public class PaymentRequest {
 
     @NotBlank(message = "payeeName is required", groups = {Verve.class})
     private String payeeName;
+    @NotNull(message = "due date is required", groups = {Verve.class})
     @Future(message = "due date should be in the future", groups = {Verve.class})
     private LocalDate dueDate;
 
