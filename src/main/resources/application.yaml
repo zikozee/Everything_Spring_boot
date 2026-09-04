@@ -49,3 +49,17 @@ esb2:
     roles:
       - USER
       - ADMIN
+
+#logging:
+#  structured:
+#    format:
+#      file: ecs
+##      console: ecs
+#  file:
+#    name: esb.json
+
+logging:
+  structured:
+#    format:
+#      console: com.zee.ebs.logging.ESBStructuredLoggerFormatter
+    enabled: ${STRUCTURED_VALUE:true}

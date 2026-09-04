@@ -125,6 +125,7 @@ public class SampleController {
             throw new FieldValidationException(fieldErrors);
         }
 
+        log.info("payment request validated: {}", paymentRequest);
         return ResponseEntity.ok(
                 new SampleResponse(
                         paymentRequest.getMerchantName(),
