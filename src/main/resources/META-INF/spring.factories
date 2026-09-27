@@ -2,3 +2,6 @@ org.springframework.boot.EnvironmentPostProcessor=\
   com.zee.ebs.environmentprocessor.CustomEnvironmentProcessor,\
   com.zee.ebs.environmentprocessor.RegionApiEnvironmentPostProcessor,\
   com.zee.ebs.logging.StructuredLoggingEnvironmentPostProcessor
+
+org.springframework.boot.diagnostics.FailureAnalyzer=\
+  com.zee.ebs.failureanalyzer.ExternalComponentAccessibilityFailureAnalyzer

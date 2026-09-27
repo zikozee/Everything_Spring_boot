@@ -63,3 +63,6 @@ logging:
 #    format:
 #      console: com.zee.ebs.logging.ESBStructuredLoggerFormatter
     enabled: ${STRUCTURED_VALUE:true}
+
+api:
+  url: https://jsonplaceholder.typicode.com/posts/1
